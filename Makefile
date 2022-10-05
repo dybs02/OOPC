@@ -2,7 +2,7 @@
 headers =
 
 # List your *.c files:
-sources = test.c
+sources = test.c stack.c
 
 # Specify name of your program:
 executable = main
