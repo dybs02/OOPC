@@ -1,5 +1,5 @@
 # List your *.h files (if you do not have them in your project then leave the variable "headers" empty):
-headers =
+headers = stack.h
 
 # List your *.c files:
 sources = test.c stack.c
