@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <stdio.h>
 
 #define GROW_VALUE 4
 
@@ -15,11 +17,13 @@ class Stack {
         void push(int element);
         int pop();
         bool isEmpty();
+        void preview();
     private:
         int top;
         int size;
         int* data;
+        void resize(int value);
         void error(string error_msg);
-};
+    };
 
 #endif
