@@ -21,6 +21,14 @@ Stack::Stack(const Stack& s1) : Stack::Stack(){
     memcpy(this->data, s1.data, s1.size*sizeof(int));
 }
 
+Stack& Stack::operator=(const Stack& s1) {
+    top = s1.top;
+    this->resize(s1.size - this->size);
+    memcpy(this->data, s1.data, s1.size*sizeof(int));
+
+    return *this;
+}
+
 Stack::~Stack() {
     free(this->data);
 }
