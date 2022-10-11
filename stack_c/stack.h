@@ -1,15 +1,15 @@
 #ifndef _STACK_H_
 #define _STACK_H_
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define GROW_VALUE 4
 
 typedef struct {
-    int top;
-    int size;
-    int* data;
+	int top;
+	int size;
+	int* data;
 } Stack;
 
 void error(Stack* s, char* error_msg);
