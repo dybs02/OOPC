@@ -1,14 +1,12 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <stdio.h>
 #include "stack.h"
 
 using namespace std;
+std::vector<Stack*> all_stacks;
 
 Stack::Stack() {
     this->top = 0;
     this->size = GROW_VALUE;
+    all_stacks.push_back(this);
 
     this->data = (int*) malloc(this->size*sizeof(int));
     if (!this->data) this->error("Error while allocating memory");
@@ -50,7 +48,9 @@ void Stack::resize(int value) {
 }
 
 void Stack::error(string error_msg) {
-    free(this->data);
+    for (Stack* s : all_stacks) {
+        free(s->data);
+    }
     cout << error_msg << endl;
     abort();
 }

@@ -5,6 +5,7 @@
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>
+#include <vector>
 
 #define GROW_VALUE 4
 
