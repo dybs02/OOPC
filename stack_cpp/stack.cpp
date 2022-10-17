@@ -51,6 +51,9 @@ void Stack::error(string error_msg) {
     for (Stack* s : all_stacks) {
         free(s->data);
     }
+    all_stacks.clear();
+    all_stacks.shrink_to_fit();
+    delete &all_stacks;
     cout << error_msg << endl;
     abort();
 }

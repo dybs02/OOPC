@@ -9,26 +9,26 @@ int main() {
         s1.push(i);
         printf("Pushed: %d\n", i);
         std::cout << "Is empty: " << s1.isEmpty() << std::endl;
-        s1.preview();
+//        s1.preview();
     }
     for (int i = 41; i < 48; i++) {
         s2.push(i);
         printf("Pushed: %d\n", i);
         std::cout << "Is empty: " << s2.isEmpty() << std::endl;
-        s2.preview();
+//        s2.preview();
     }
 
     for (int i = 0; i < 7; i++) {
         int p = s1.pop();
         printf("Popped: %d\n", p);
         std::cout << "Is empty: " << s1.isEmpty() << std::endl;
-        s1.preview();
+//        s1.preview();
     }
     for (int i = 0; i < 7; i++) {
         int p = s2.pop();
         printf("Popped: %d\n", p);
         std::cout << "Is empty: " << s2.isEmpty() << std::endl;
-        s2.preview();
+//        s2.preview();
     }
 
     s1.pop();
