@@ -2,8 +2,7 @@
 #define _STACK_H_
 
 #include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 #define GROW_VALUE 4
 
 typedef struct {
