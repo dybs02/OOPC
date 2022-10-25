@@ -2,13 +2,13 @@
 headers = complex.h
 
 # List your *.c files:
-sources = test.c complex.c
+sources = test.cpp complex.cpp
 
 # Specify name of your program:
 executable = main
 
 all: $(headers) $(sources)
-	gcc -g -Wall -pedantic $(sources) -o $(executable)
+	g++ -g -Wall -pedantic $(sources) -o $(executable)
 
 .PHONY: clean
 clean:
