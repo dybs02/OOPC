@@ -33,7 +33,7 @@ Complex& Complex::operator=(double d)
     return *this;
 }
 
-Complex Complex::operator+(const Complex& c)
+Complex Complex::operator+(const Complex& c) const
 {
     return  Complex(
             this->real + c.real,
@@ -49,7 +49,7 @@ Complex Complex::operator+(double d)
     );
 }
 
-Complex Complex::operator-(const Complex& c)
+Complex Complex::operator-(const Complex& c) const
 {
     return  Complex(
             this->real - c.real,
@@ -65,7 +65,12 @@ Complex Complex::operator-(double d)
     );
 }
 
-Complex Complex::operator*(const Complex& c)
+Complex Complex::operator-() const
+{
+    return Complex(-this->real, -this->imag);
+}
+
+Complex Complex::operator*(const Complex& c) const
 {
     return  Complex(
             this->real*c.real - this->imag*c.imag,
@@ -81,7 +86,7 @@ Complex Complex::operator*(double d)
     );
 }
 
-Complex Complex::operator/(const Complex& c)
+Complex Complex::operator/(const Complex& c) const
 {
     double sum_sqr = pow(c.real, 2) + pow(c.imag, 2);
     return  Complex(
@@ -148,7 +153,7 @@ Complex& Complex::operator/=(double d)
     return *this;
 }
 
-bool Complex::operator==(const Complex& c)
+bool Complex::operator==(const Complex& c) const
 {
     return (this->real == c.real && this->imag == c.imag);
 }
@@ -158,7 +163,7 @@ bool Complex::operator==(double d)
     return (this->real == d && this->imag == 0);
 }
 
-bool Complex::operator!=(const Complex& c)
+bool Complex::operator!=(const Complex& c) const
 {
     return !(this->real == c.real && this->imag == c.imag);
 }
