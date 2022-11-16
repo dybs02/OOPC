@@ -173,13 +173,13 @@ bool Complex::operator!=(double d)
     return !(this->real == d && this->imag == 0);
 }
 
-double Complex::getAmplitude()
+double Complex::getAmplitude() const
 {
     std::complex<double> z(this->real, this->imag);
     return std::abs(z);
 }
 
-double Complex::getPhase()
+double Complex::getPhase() const
 {
     std::complex<double> z(this->real, this->imag);
     return std::arg(z);

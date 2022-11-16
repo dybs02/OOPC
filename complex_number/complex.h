@@ -36,8 +36,8 @@ class Complex {
     bool operator==(double d);
     bool operator!=(const Complex& c) const;
     bool operator!=(double d);
-    double getAmplitude();
-    double getPhase();
+    double getAmplitude() const;
+    double getPhase() const;
     friend std::ostream& operator<<(std::ostream& s, const Complex& c);
     friend Complex operator+(const double& d, const Complex& c);
     friend Complex operator-(const double& d, const Complex& c);
