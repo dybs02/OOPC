@@ -21,5 +21,15 @@ int main()
     cout << (3.5 == c) << endl;
     cout << a << b << c << endl;
 
+    const Complex d = Complex(6.1, -7.4);
+
+    a = d + c;
+    b = -d;
+    d == a;
+    cout << d.getPhase() << endl;
+    cout << d.getAmplitude() << endl;
+    cout << a.getPhase() << endl;
+    cout << a.getAmplitude() << endl;
+
     return 0;
 }
