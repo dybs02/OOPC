@@ -51,7 +51,7 @@ Complex Complex::operator*(const Complex& c) const
 {
     return  Complex(
             this->real*c.real - this->imag*c.imag,
-            this->real*c.imag - this->imag*c.real
+            this->real*c.imag + this->imag*c.real
     );
 }
 
