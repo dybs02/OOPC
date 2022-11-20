@@ -26,13 +26,6 @@ Complex& Complex::operator=(const Complex& c)
     return *this;
 }
 
-Complex& Complex::operator=(double d)
-{
-    this->real = d;
-    this->imag = 0;
-    return *this;
-}
-
 Complex Complex::operator+(const Complex& c) const
 {
     return  Complex(
@@ -41,27 +34,11 @@ Complex Complex::operator+(const Complex& c) const
             );
 }
 
-Complex Complex::operator+(double d)
-{
-    return  Complex(
-            this->real + d,
-            this->imag
-    );
-}
-
 Complex Complex::operator-(const Complex& c) const
 {
     return  Complex(
             this->real - c.real,
             this->imag - c.imag
-    );
-}
-
-Complex Complex::operator-(double d)
-{
-    return  Complex(
-            this->real - d,
-            this->imag
     );
 }
 
@@ -78,28 +55,12 @@ Complex Complex::operator*(const Complex& c) const
     );
 }
 
-Complex Complex::operator*(double d)
-{
-    return  Complex(
-            this->real * d,
-            this->imag * d
-    );
-}
-
 Complex Complex::operator/(const Complex& c) const
 {
     double sum_sqr = pow(c.real, 2) + pow(c.imag, 2);
     return  Complex(
             (this->real*c.real + this->imag*c.imag) / sum_sqr,
             (this->imag*c.real - this->real*c.imag) / sum_sqr
-    );
-}
-
-Complex Complex::operator/(double d)
-{
-    return  Complex(
-            this->real / d,
-            this->imag / d
     );
 }
 
@@ -110,22 +71,10 @@ Complex& Complex::operator+=(const Complex& c)
     return *this;
 }
 
-Complex& Complex::operator+=(double d)
-{
-    this->real += d;
-    return *this;
-}
-
 Complex& Complex::operator-=(const Complex& c)
 {
     this->real -= c.real;
     this->imag -= c.imag;
-    return *this;
-}
-
-Complex& Complex::operator-=(double d)
-{
-    this->real -= d;
     return *this;
 }
 
@@ -135,21 +84,9 @@ Complex& Complex::operator*=(const Complex& c)
     return *this;
 }
 
-Complex& Complex::operator*=(double d)
-{
-    *this = (*this) * d;
-    return *this;
-}
-
 Complex& Complex::operator/=(const Complex& c)
 {
     *this = (*this) / c;
-    return *this;
-}
-
-Complex& Complex::operator/=(double d)
-{
-    *this = (*this) / d;
     return *this;
 }
 
@@ -158,19 +95,9 @@ bool Complex::operator==(const Complex& c) const
     return (this->real == c.real && this->imag == c.imag);
 }
 
-bool Complex::operator==(double d)
-{
-    return (this->real == d && this->imag == 0);
-}
-
 bool Complex::operator!=(const Complex& c) const
 {
     return !(this->real == c.real && this->imag == c.imag);
-}
-
-bool Complex::operator!=(double d)
-{
-    return !(this->real == d && this->imag == 0);
 }
 
 double Complex::getAmplitude() const
