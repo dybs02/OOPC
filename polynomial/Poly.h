@@ -21,6 +21,9 @@ class Poly {
 //    double operator[](size_t pos) const;
   private:
     map<int, double> coef;
+    friend Poly operator+(const double& d, const Poly& p);
+    friend Poly operator-(const double& d, const Poly& p);
+    friend Poly operator*(const double& d, const Poly& p);
     friend std::ostream& operator<<(std::ostream& s, const Poly& p);
 };
 

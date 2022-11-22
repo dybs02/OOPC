@@ -97,6 +97,21 @@ Poly Poly::operator*(const Poly& p) const
     return result;
 }
 
+Poly operator+(const double& d, const Poly& p)
+{
+    return p + d;
+}
+
+Poly operator-(const double& d, const Poly& p)
+{
+    return p - d;
+}
+
+Poly operator*(const double& d, const Poly& p)
+{
+    return p * d;
+}
+
 std::ostream& operator<<(ostream& s, const Poly& p)
 {
     bool isZero = true;
