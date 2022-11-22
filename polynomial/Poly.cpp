@@ -15,6 +15,20 @@ Poly::Poly(const Poly& p)
     this->coef = p.coef;
 }
 
+double Poly::operator()(double x) const
+{
+    double result = 0;
+
+    for (auto pair = this->coef.begin(); pair != this->coef.end(); pair++) {
+        int key = pair->first;
+        double val = pair->second;
+
+        result += pow(x, key) * val;
+    }
+
+    return result;
+}
+
 double& Poly::operator[](size_t pos)
 {
     return this->coef[pos];

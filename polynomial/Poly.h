@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <map>
+#include <cmath>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ class Poly {
     Poly();
     Poly(double d);
     Poly(const Poly& p);
+    double operator()(double x) const;
     double& operator[](size_t pos);
     Poly operator+(const Poly& p) const;
     Poly operator-(const Poly& p) const;
