@@ -20,10 +20,10 @@ double Poly::operator()(double x) const
     double result = 0;
 
     for (auto pair = this->coef.begin(); pair != this->coef.end(); pair++) {
-        int key = pair->first;
+        int exp = pair->first;
         double val = pair->second;
 
-        result += pow(x, key) * val;
+        result += pow(x, exp) * val;
     }
 
     return result;
@@ -39,13 +39,13 @@ Poly Poly::operator+(const Poly& p) const
     Poly result = Poly(*this);
 
     for (auto pair = p.coef.begin(); pair != p.coef.end(); pair++) {
-        int key = pair->first;
+        int exp = pair->first;
         double val = pair->second;
 
-        if (result.coef.count(key)) {
-            result.coef[key] += val;
+        if (result.coef.count(exp)) {
+            result.coef[exp] += val;
         }else {
-            result.coef[key] = val;
+            result.coef[exp] = val;
         }
     }
 
@@ -59,16 +59,7 @@ Poly Poly::operator-(const Poly& p) const
 
 Poly Poly::operator-() const
 {
-    Poly result = Poly();
-
-    for (auto pair = this->coef.begin(); pair != this->coef.end(); pair++) {
-        int key = pair->first;
-        double val = pair->second;
-
-        result.coef[key] = -val;
-    }
-
-    return result;
+    return *this * (-1);
 }
 
 Poly Poly::operator*(const Poly& p) const
@@ -76,18 +67,18 @@ Poly Poly::operator*(const Poly& p) const
     Poly result = Poly();
 
     for (auto pair1 = p.coef.begin(); pair1 != p.coef.end(); pair1++) {
-        int key1 = pair1->first;
+        int exp1 = pair1->first;
         double val1 = pair1->second;
         Poly temp = Poly();
 
         for (auto pair2 = this->coef.begin(); pair2 != this->coef.end(); pair2++) {
-            int key2 = pair2->first;
+            int exp2 = pair2->first;
             double val2 = pair2->second;
 
-            if (temp.coef.count(key1 + key2)) {
-                temp[key1 + key2] += val1 * val2;
+            if (temp.coef.count(exp1 + exp2)) {
+                temp[exp1 + exp2] += val1 * val2;
             }else {
-                temp[key1 + key2] = val1 * val2;
+                temp[exp1 + exp2] = val1 * val2;
             }
         }
 
@@ -117,7 +108,7 @@ std::ostream& operator<<(ostream& s, const Poly& p)
     bool isZero = true;
 
     for (auto pair = p.coef.crbegin(); pair != p.coef.crend(); pair++) {
-        int key = pair->first;
+        int exp = pair->first;
         double val = pair->second;
 
         if (val != 0) {
@@ -125,10 +116,10 @@ std::ostream& operator<<(ostream& s, const Poly& p)
                 s << (val >= 0 ? " + " : " - ");
             }
 
-            if (key == 0) {
+            if (exp == 0) {
                 s << abs(val);
             } else {
-                s << abs(val) << "x^" << key;
+                s << abs(val) << "x^" << exp;
             }
 
             isZero = false;

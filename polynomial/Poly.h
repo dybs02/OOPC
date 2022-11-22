@@ -18,7 +18,6 @@ class Poly {
     Poly operator-(const Poly& p) const;
     Poly operator-() const;
     Poly operator*(const Poly& p) const;
-//    double operator[](size_t pos) const;
   private:
     map<int, double> coef;
     friend Poly operator+(const double& d, const Poly& p);
