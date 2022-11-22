@@ -85,10 +85,28 @@ Poly Poly::operator*(const Poly& p) const
 
 std::ostream& operator<<(ostream& s, const Poly& p)
 {
+    bool isZero = true;
+
     for (auto pair = p.coef.crbegin(); pair != p.coef.crend(); pair++) {
-        char buffer[50];
-        sprintf(buffer, "%+.8g", pair->second);
-        s << buffer << "x^" << pair->first << " ";
+        int key = pair->first;
+        double val = pair->second;
+
+        if (val != 0) {
+            if (pair != p.coef.crbegin()) {
+                s << (val >= 0 ? " + " : " - ");
+            }
+
+            if (key == 0) {
+                s << abs(val);
+            } else {
+                s << abs(val) << "x^" << key;
+            }
+
+            isZero = false;
+        }
+    }
+    if (isZero) {
+        s << 0;
     }
     s << endl;
     return s;
