@@ -38,6 +38,51 @@ Poly Poly::operator+(const Poly& p) const
     return result;
 }
 
+Poly Poly::operator-(const Poly& p) const
+{
+    return *this + (-p);
+}
+
+Poly Poly::operator-() const
+{
+    Poly result = Poly();
+
+    for (auto pair = this->coef.begin(); pair != this->coef.end(); pair++) {
+        int key = pair->first;
+        double val = pair->second;
+
+        result.coef[key] = -val;
+    }
+
+    return result;
+}
+
+Poly Poly::operator*(const Poly& p) const
+{
+    Poly result = Poly();
+
+    for (auto pair1 = p.coef.begin(); pair1 != p.coef.end(); pair1++) {
+        int key1 = pair1->first;
+        double val1 = pair1->second;
+        Poly temp = Poly();
+
+        for (auto pair2 = this->coef.begin(); pair2 != this->coef.end(); pair2++) {
+            int key2 = pair2->first;
+            double val2 = pair2->second;
+
+            if (temp.coef.count(key1 + key2)) {
+                temp[key1 + key2] += val1 * val2;
+            }else {
+                temp[key1 + key2] = val1 * val2;
+            }
+        }
+
+        result = result + temp;
+    }
+
+    return result;
+}
+
 std::ostream& operator<<(ostream& s, const Poly& p)
 {
     for (auto pair = p.coef.crbegin(); pair != p.coef.crend(); pair++) {
