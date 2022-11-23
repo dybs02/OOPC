@@ -42,11 +42,7 @@ Poly Poly::operator+(const Poly& p) const
         int exp = pair->first;
         double val = pair->second;
 
-        if (result.coef.count(exp)) {
-            result.coef[exp] += val;
-        }else {
-            result.coef[exp] = val;
-        }
+        result.coef[exp] += val;
     }
 
     return result;
@@ -116,18 +112,20 @@ std::ostream& operator<<(ostream& s, const Poly& p)
                 s << (val >= 0 ? " + " : " - ");
             }
 
-            if (exp == 0) {
-                s << abs(val);
-            } else {
-                s << abs(val) << "x^" << exp;
+            s << abs(val);
+
+            if (exp != 0) {
+                s << "x^" << exp;
             }
 
             isZero = false;
         }
     }
+
     if (isZero) {
         s << 0;
     }
+
     s << endl;
     return s;
 }
