@@ -57,7 +57,43 @@ Matrix& Matrix::operator+=(const Matrix& m)
     return *this;
 }
 
+Matrix Matrix::operator*(const Matrix& m) const
+{
+    return Matrix(*this) *= m;
+}
+
+Matrix& Matrix::operator*=(const Matrix& m)
+{
+    if (data->column_n != m.data->row_n) {
+        // TODO throw custom error
+        return *this;
+    }
+
+    Matrix result = Matrix(data->row_n, m.data->column_n);
+
+    for (int r = 0; r < result.data->row_n; ++r) {
+        for (int c = 0; c < result.data->column_n; ++c) {
+            double sum = 0;
+
+            for (int n = 0; n < data->column_n; ++n) {
+                sum += (*this)(r, n) * m(n, c);
+            }
+
+            result(r, c) = sum;
+        }
+    }
+
+    *this = result;
+    return *this;
+}
+
 double& Matrix::operator()(int row, int column)
+{
+    // TODO add range check & throw custom error
+    return data->matrix[row][column];
+}
+
+double Matrix::operator()(int row, int column) const
 {
     // TODO add range check & throw custom error
     return data->matrix[row][column];

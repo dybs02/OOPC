@@ -16,11 +16,11 @@ class Matrix {
     void assignRandomValues();
     Matrix& operator=(const Matrix& m);
     Matrix operator+(const Matrix& m) const;
+    Matrix& operator+=(const Matrix& m);
     Matrix operator-(const Matrix& m) const;
+    Matrix& operator-=(const Matrix& m);
     Matrix operator-() const;
     Matrix operator*(const Matrix& m) const;
-    Matrix& operator+=(const Matrix& m);
-    Matrix& operator-=(const Matrix& m);
     Matrix& operator*=(const Matrix& m);
     double& operator()(int row, int column);
     double operator()(int row, int column) const;
