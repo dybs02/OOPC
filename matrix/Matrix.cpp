@@ -53,8 +53,31 @@ Matrix& Matrix::operator+=(const Matrix& m)
         }
     }
 
-    *this = m;
+    *this = result;
     return *this;
+}
+
+Matrix Matrix::operator-(const Matrix& m) const
+{
+    return Matrix(*this) -= m;
+}
+
+Matrix& Matrix::operator-=(const Matrix& m)
+{
+    return (*this) += (-m);
+}
+
+Matrix Matrix::operator-() const
+{
+    Matrix result = Matrix(data->row_n, data->column_n);
+
+    for (int r = 0; r < result.data->row_n; ++r) {
+        for (int c = 0; c < result.data->column_n; ++c) {
+            result(r, c) = (*this)(r, c) * (-1);
+        }
+    }
+
+    return result;
 }
 
 Matrix Matrix::operator*(const Matrix& m) const
