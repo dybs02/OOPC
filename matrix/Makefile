@@ -1,8 +1,8 @@
 # List your *.h files (if you do not have them in your project then leave the variable "headers" empty):
-headers = Matrix.h
+headers = Matrix.h MatrixData.h
 
 # List your *.cpp files:
-sources = Test.cpp Matrix.cpp
+sources = Test.cpp Matrix.cpp MatrixData.cpp
 
 # Specify name of your program:
 executable = main

@@ -1,26 +1,34 @@
 #ifndef _MATRIX_H_
 #define _MATRIX_H_
 
-#include <istream>
-#include <ostream>
+#include <iostream>
+#include <memory>
+#include <experimental/random>
+#include "MatrixData.h"
+
+using namespace std;
 
 class Matrix {
   public:
-    Matrix();
+    Matrix(int rows = 0, int columns = 0);
     Matrix(const Matrix& m);
+    ~Matrix();
+    void assignRandomValues();
     Matrix& operator=(const Matrix& m);
-    Matrix operator+(const Matrix& c) const;
-    Matrix operator-(const Matrix& c) const;
+    Matrix operator+(const Matrix& m) const;
+    Matrix operator-(const Matrix& m) const;
     Matrix operator-() const;
-    Matrix operator*(const Matrix& c) const;
-    Matrix& operator+=(const Matrix& c);
-    Matrix& operator-=(const Matrix& c);
-    Matrix& operator*=(const Matrix& c);
-    double& operator()(int x, int y);
-    double operator()(int x, int y) const;
+    Matrix operator*(const Matrix& m) const;
+    Matrix& operator+=(const Matrix& m);
+    Matrix& operator-=(const Matrix& m);
+    Matrix& operator*=(const Matrix& m);
+    double& operator()(int row, int column);
+    double operator()(int row, int column) const;
 private:
-    friend std::istream& operator>>(std::istream& s, Matrix& m);
-    friend std::ostream& operator<<(std::ostream& s, const Matrix& m);
+    MatrixData* data;
+    void decrement();
+    friend istream& operator>>(istream& s, Matrix& m);
+    friend ostream& operator<<(ostream& s, const Matrix& m);
 };
 
 #endif
