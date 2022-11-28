@@ -24,6 +24,8 @@ class Matrix {
     Matrix& operator*=(const Matrix& m);
     double& operator()(int row, int column);
     double operator()(int row, int column) const;
+    bool operator==(const Matrix& m) const;
+    bool operator!=(const Matrix& m) const;
 private:
     MatrixData* data;
     void decrement();

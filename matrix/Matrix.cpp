@@ -112,14 +112,38 @@ Matrix& Matrix::operator*=(const Matrix& m)
 
 double& Matrix::operator()(int row, int column)
 {
+//    cout << "double& operator() - write:" << endl;
     // TODO add range check & throw custom error
     return data->matrix[row][column];
 }
 
 double Matrix::operator()(int row, int column) const
 {
+//    cout << "double operator() - read:" << endl;
     // TODO add range check & throw custom error
     return data->matrix[row][column];
+}
+
+bool Matrix::operator==(const Matrix& m) const
+{
+    if (data->row_n != m.data->row_n || data->column_n != m.data->column_n) {
+        return false;
+    }
+
+    for (int r = 0; r < data->row_n; ++r) {
+        for (int c = 0; c < data->column_n; ++c) {
+            if (data->matrix[r][c] != m.data->matrix[r][c]) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool Matrix::operator!=(const Matrix& m) const
+{
+    return !((*this) == m);
 }
 
 void Matrix::decrement()

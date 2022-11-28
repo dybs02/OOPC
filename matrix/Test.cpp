@@ -3,12 +3,14 @@
 void testAddition();
 void testSubtraction();
 void testMultiplication();
+void testComparison();
 
 int main()
 {
-//    testAddition();
+    testAddition();
     testSubtraction();
-//    testMultiplication();
+    testMultiplication();
+    testComparison();
 
     return 0;
 }
@@ -92,4 +94,25 @@ void testMultiplication()
     cout << "m3 *= m1 :" << endl;
     m3 *= m1;
     cout << m3 << endl;
+}
+
+void testComparison()
+{
+    cout << "-----------------------------" << endl;
+    cout << "Testing comparison" << endl;
+
+    Matrix m1 = Matrix(2, 3);
+    Matrix m2 = Matrix(3, 4);
+    m1.assignRandomValues();
+    m2.assignRandomValues();
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m1 == m2 : " << (m1 == m2) << endl;
+    cout << "m1 != m2 : " << (m1 != m2) << endl;
+    cout << "m1 == m1 : " << (m1 == m1) << endl;
 }
