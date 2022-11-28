@@ -24,3 +24,20 @@ MatrixData::~MatrixData()
     }
     delete[] matrix;
 }
+
+MatrixData* MatrixData::detach()
+{
+    if (this->ref_n == 1) {
+        return this;
+    }
+
+    MatrixData* newData = new MatrixData(row_n, column_n);
+
+    for (int r = 0; r < row_n; r++) {
+//        copy(begin(matrix[r]), end(matrix[r]), begin(newData->matrix[r]));
+        memcpy(matrix[r], newData->matrix[r], column_n * sizeof(double));
+    }
+
+    ref_n--;
+    return newData;
+}

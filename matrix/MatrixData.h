@@ -1,6 +1,10 @@
 #ifndef _MATRIXDATA_H_
 #define _MATRIXDATA_H_
 
+#include <cstring>
+
+using namespace std;
+
 class MatrixData {
   public:
     int row_n;
@@ -10,6 +14,7 @@ class MatrixData {
     MatrixData();
     MatrixData(int rows, int columns);
     ~MatrixData();
+    MatrixData* detach();
 };
 
 #endif

@@ -114,6 +114,7 @@ double& Matrix::operator()(int row, int column)
 {
 //    cout << "double& operator() - write:" << endl;
     // TODO add range check & throw custom error
+    data = data->detach();
     return data->matrix[row][column];
 }
 
