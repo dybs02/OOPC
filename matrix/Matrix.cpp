@@ -154,6 +154,29 @@ void Matrix::decrement()
     }
 }
 
+istream& operator>>(istream& s, Matrix& m)
+{
+    Matrix newMatrix;
+    string line;
+
+    if (getline(s, line)) {
+        int rows, columns;
+        stringstream ss(line);
+        ss >> rows >> columns;
+        newMatrix = Matrix(rows, columns);
+    }
+
+    for (int r = 0; r < newMatrix.data->row_n && getline(s, line); ++r) {
+        stringstream ss(line);
+        for (int c = 0; c < newMatrix.data->column_n; ++c) {
+            ss >> newMatrix.data->matrix[r][c];
+        }
+    }
+
+    m = newMatrix;
+    return s;
+}
+
 ostream& operator<<(ostream& s, const Matrix& m)
 {
     s << "Matrix " << m.data->row_n << "x" << m.data->column_n << endl;

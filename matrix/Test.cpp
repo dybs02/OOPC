@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include <fstream>
 
 void testAddition();
 void testSubtraction();
@@ -7,10 +8,15 @@ void testComparison();
 
 int main()
 {
-    testAddition();
-    testSubtraction();
-    testMultiplication();
-    testComparison();
+//    testAddition();
+//    testSubtraction();
+//    testMultiplication();
+//    testComparison();
+
+    Matrix m1;
+    ifstream fileIn("m1.txt");
+    fileIn >> m1;
+    cout << m1;
 
     return 0;
 }

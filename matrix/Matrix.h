@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <experimental/random>
+#include <sstream>
 #include "MatrixData.h"
 
 using namespace std;
