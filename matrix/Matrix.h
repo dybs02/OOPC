@@ -6,6 +6,7 @@
 #include <experimental/random>
 #include <sstream>
 #include "MatrixData.h"
+#include "MatrixExceptions.h"
 
 using namespace std;
 

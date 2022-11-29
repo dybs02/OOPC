@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <fstream>
 
+void testExceptions();
 void testFileInput();
 void testAssignments();
 void testAddition();
@@ -10,6 +11,7 @@ void testComparison();
 
 int main()
 {
+    testExceptions();
     testFileInput();
     testAssignments();
     testAddition();
@@ -18,6 +20,41 @@ int main()
     testComparison();
 
     return 0;
+}
+
+void testExceptions()
+{
+    Matrix m1 = Matrix(2, 2);
+    Matrix m2 = Matrix(5, 5);
+    m1.assignRandomValues();
+    m2.assignRandomValues();
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m1 + m2" << endl;
+    try {
+        m1 + m2;
+    }catch (const exception& e) {
+        cout << e.what();
+    }
+
+    cout << "m1 * m2" << endl;
+    try {
+        m1 * m2;
+    }catch (const exception& e) {
+        cout << e.what();
+    }
+
+    cout << "m1(1, 55)" << endl;
+    try {
+        m1(1, 55);
+    }catch (const exception& e) {
+        cout << e.what();
+    }
 }
 
 void testFileInput()
@@ -132,8 +169,10 @@ void testMultiplication()
     Matrix m1 = Matrix(2, 3);
     Matrix m2 = Matrix(3, 4);
     Matrix m3 = Matrix(4, 2);
+    Matrix m4 = Matrix(4, 2);
     m1.assignRandomValues();
     m2.assignRandomValues();
+    m4.assignRandomValues();
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -145,9 +184,12 @@ void testMultiplication()
     m3 = m1 * m2;
     cout << m3 << endl;
 
-    cout << "m3 *= m1 :" << endl;
-    m3 *= m1;
-    cout << m3 << endl;
+    cout << "m4 :" << endl;
+    cout << m4 << endl;
+
+    cout << "m4 *= m1 :" << endl;
+    m4 *= m1;
+    cout << m4 << endl;
 }
 
 void testComparison()

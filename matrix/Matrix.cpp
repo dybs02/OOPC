@@ -50,8 +50,7 @@ Matrix Matrix::operator+(const Matrix& m) const
 Matrix& Matrix::operator+=(const Matrix& m)
 {
     if (data->row_n != m.data->row_n || data->column_n != m.data->column_n) {
-        // TODO throw custom error
-        return *this;
+        throw (DifferentMatrixDimensions(data, m.data));
     }
 
     Matrix result = Matrix(data->row_n, data->column_n);
@@ -97,8 +96,7 @@ Matrix Matrix::operator*(const Matrix& m) const
 Matrix& Matrix::operator*=(const Matrix& m)
 {
     if (data->column_n != m.data->row_n) {
-        // TODO throw custom error
-        return *this;
+        throw (MatrixNotMultiplicable(data, m.data));
     }
 
     Matrix result = Matrix(data->row_n, m.data->column_n);
@@ -122,7 +120,10 @@ Matrix& Matrix::operator*=(const Matrix& m)
 double& Matrix::operator()(int row, int column)
 {
 //    cout << "double& operator() - write:" << endl;
-    // TODO add range check & throw custom error
+    if (row < 0 || row >= data->row_n || column < 0 || column >= data->column_n) {
+        throw (InvalidMatrixRange(row, column));
+    }
+
     data = data->detach();
     return data->matrix[row][column];
 }
@@ -130,7 +131,10 @@ double& Matrix::operator()(int row, int column)
 double Matrix::operator()(int row, int column) const
 {
 //    cout << "double operator() - read:" << endl;
-    // TODO add range check & throw custom error
+    if (row < 0 || row >= data->row_n || column < 0 || column >= data->column_n) {
+        throw (InvalidMatrixRange(row, column));
+    }
+
     return data->matrix[row][column];
 }
 
