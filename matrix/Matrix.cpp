@@ -93,6 +93,11 @@ Matrix Matrix::operator*(const Matrix& m) const
     return Matrix(*this) *= m;
 }
 
+Matrix Matrix::operator*(double d) const
+{
+    return Matrix(*this) *= d;
+}
+
 Matrix& Matrix::operator*=(const Matrix& m)
 {
     if (data->column_n != m.data->row_n) {
@@ -114,6 +119,17 @@ Matrix& Matrix::operator*=(const Matrix& m)
     }
 
     *this = result;
+    return *this;
+}
+
+Matrix& Matrix::operator*=(double d)
+{
+    for (int r = 0; r < data->row_n; ++r) {
+        for (int c = 0; c < data->column_n; ++c) {
+            (*this)(r, c) *= d;
+        }
+    }
+
     return *this;
 }
 
@@ -202,4 +218,9 @@ ostream& operator<<(ostream& s, const Matrix& m)
         s << endl;
     }
     return s;
+}
+
+Matrix operator*(double d, const Matrix& m)
+{
+    return m * d;
 }

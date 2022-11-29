@@ -24,7 +24,9 @@ class Matrix {
     Matrix& operator-=(const Matrix& m);
     Matrix operator-() const;
     Matrix operator*(const Matrix& m) const;
+    Matrix operator*(double d) const;
     Matrix& operator*=(const Matrix& m);
+    Matrix& operator*=(double d);
     double& operator()(int row, int column);
     double operator()(int row, int column) const;
     bool operator==(const Matrix& m) const;
@@ -35,5 +37,7 @@ private:
     friend istream& operator>>(istream& s, Matrix& m);
     friend ostream& operator<<(ostream& s, const Matrix& m);
 };
+
+Matrix operator*(double d, const Matrix& m);
 
 #endif

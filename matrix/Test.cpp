@@ -190,6 +190,16 @@ void testMultiplication()
     cout << "m4 *= m1 :" << endl;
     m4 *= m1;
     cout << m4 << endl;
+
+    cout << "m1 * 100 :" << endl;
+    cout << m1 * 100 << endl;
+
+    cout << "100 * m1 :" << endl;
+    cout << 100 * m1 << endl;
+
+    cout << "m1 *= 100 :" << endl;
+    m1 *= 100;
+    cout << m1 << endl;
 }
 
 void testComparison()
