@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <fstream>
 
+void testFileInput();
 void testAssignments();
 void testAddition();
 void testSubtraction();
@@ -9,24 +10,47 @@ void testComparison();
 
 int main()
 {
+    testFileInput();
     testAssignments();
-//    testAddition();
-//    testSubtraction();
-//    testMultiplication();
-//    testComparison();
-
-    Matrix m1;
-    ifstream fileIn("m1.txt");
-    fileIn >> m1;
-    cout << m1;
+    testAddition();
+    testSubtraction();
+    testMultiplication();
+    testComparison();
 
     return 0;
 }
 
+void testFileInput()
+{
+    cout << "-----------------------------" << endl;
+    cout << "Testing file input stream" << endl;
+    Matrix m1, m2;
+
+    {
+        ifstream fileIn("m1.txt");
+        fileIn >> m1;
+    }
+    {
+        ifstream fileIn("m2.txt");
+        fileIn >> m2;
+    }
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+}
+
 void testAssignments()
 {
+    cout << "-----------------------------" << endl;
+    cout << "Testing assignments" << endl;
+
     Matrix m1 = Matrix(2, 3);
     m1.assignSameValues(1);
+
+    cout << "m2 = m1" << endl << endl;
     Matrix m2 = m1;
 
     cout << "m1 :" << endl;
