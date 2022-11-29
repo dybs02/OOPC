@@ -58,7 +58,7 @@ Matrix& Matrix::operator+=(const Matrix& m)
 
     for (int r = 0; r < data->row_n; ++r) {
         for (int c = 0; c < data->column_n; ++c) {
-            result(r, c) = data->matrix[r][c] + m.data->matrix[r][c];
+            result(r, c) = (*this)(r, c) + m(r, c);
         }
     }
 
@@ -142,7 +142,7 @@ bool Matrix::operator==(const Matrix& m) const
 
     for (int r = 0; r < data->row_n; ++r) {
         for (int c = 0; c < data->column_n; ++c) {
-            if (data->matrix[r][c] != m.data->matrix[r][c]) {
+            if ((*this)(r, c) != m(r, c)) {
                 return false;
             }
         }
@@ -179,7 +179,8 @@ istream& operator>>(istream& s, Matrix& m)
     for (int r = 0; r < newMatrix.data->row_n && getline(s, line); ++r) {
         stringstream ss(line);
         for (int c = 0; c < newMatrix.data->column_n; ++c) {
-            ss >> newMatrix.data->matrix[r][c];
+//            ss >> newMatrix.data->matrix[r][c];
+            ss >> newMatrix(r, c);
         }
     }
 
@@ -192,7 +193,7 @@ ostream& operator<<(ostream& s, const Matrix& m)
     s << "Matrix " << m.data->row_n << "x" << m.data->column_n << endl;
     for (int r = 0; r < m.data->row_n; ++r) {
         for (int c = 0; c < m.data->column_n; ++c) {
-            s << m.data->matrix[r][c] << " ";
+            s << m(r, c) << " ";
         }
         s << endl;
     }
