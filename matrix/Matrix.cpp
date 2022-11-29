@@ -25,6 +25,15 @@ void Matrix::assignRandomValues()
     }
 }
 
+void Matrix::assignSameValues(double value)
+{
+    for (int r = 0; r < data->row_n; ++r) {
+        for (int c = 0; c < data->column_n; ++c) {
+            (*this)(r, c) = value;
+        }
+    }
+}
+
 Matrix& Matrix::operator=(const Matrix& m)
 {
     m.data->ref_n++;

@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <fstream>
 
+void testAssignments();
 void testAddition();
 void testSubtraction();
 void testMultiplication();
@@ -8,6 +9,7 @@ void testComparison();
 
 int main()
 {
+    testAssignments();
 //    testAddition();
 //    testSubtraction();
 //    testMultiplication();
@@ -19,6 +21,28 @@ int main()
     cout << m1;
 
     return 0;
+}
+
+void testAssignments()
+{
+    Matrix m1 = Matrix(2, 3);
+    m1.assignSameValues(1);
+    Matrix m2 = m1;
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m1.assignRandomValues()" << endl << endl;
+    m1.assignRandomValues();
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
 }
 
 void testAddition()

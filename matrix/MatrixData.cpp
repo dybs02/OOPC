@@ -34,8 +34,7 @@ MatrixData* MatrixData::detach()
     MatrixData* newData = new MatrixData(row_n, column_n);
 
     for (int r = 0; r < row_n; r++) {
-//        copy(begin(matrix[r]), end(matrix[r]), begin(newData->matrix[r]));
-        memcpy(matrix[r], newData->matrix[r], column_n * sizeof(double));
+        memcpy(newData->matrix[r], matrix[r], column_n * sizeof(double));
     }
 
     ref_n--;

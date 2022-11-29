@@ -15,6 +15,7 @@ class Matrix {
     Matrix(const Matrix& m);
     ~Matrix();
     void assignRandomValues();
+    void assignSameValues(double value);
     Matrix& operator=(const Matrix& m);
     Matrix operator+(const Matrix& m) const;
     Matrix& operator+=(const Matrix& m);
