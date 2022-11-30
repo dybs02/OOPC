@@ -11,7 +11,6 @@ class MatrixData {
     int column_n;
     double** matrix; // matrix[row][column]
     int ref_n;
-    MatrixData();
     MatrixData(int rows, int columns);
     ~MatrixData();
     MatrixData* detach();

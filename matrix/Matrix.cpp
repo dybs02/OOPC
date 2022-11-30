@@ -3,6 +3,7 @@
 Matrix::Matrix(int rows, int columns)
 {
     data = new MatrixData(rows, columns);
+    this->assignSameValues(0);
 }
 
 Matrix::Matrix(const Matrix& m)

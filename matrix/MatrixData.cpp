@@ -1,10 +1,5 @@
 #include "MatrixData.h"
 
-MatrixData::MatrixData()
-{
-
-}
-
 MatrixData::MatrixData(int rows, int columns)
 {
     this->row_n = rows;
