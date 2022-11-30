@@ -200,7 +200,6 @@ istream& operator>>(istream& s, Matrix& m)
     for (int r = 0; r < newMatrix.data->row_n && getline(s, line); ++r) {
         stringstream ss(line);
         for (int c = 0; c < newMatrix.data->column_n; ++c) {
-//            ss >> newMatrix.data->matrix[r][c];
             ss >> newMatrix(r, c);
         }
     }
