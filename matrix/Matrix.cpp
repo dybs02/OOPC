@@ -54,15 +54,14 @@ Matrix& Matrix::operator+=(const Matrix& m)
         throw (DifferentMatrixDimensions(data, m.data));
     }
 
-    Matrix result = Matrix(data->row_n, data->column_n);
+    data = data->detach();
 
     for (int r = 0; r < data->row_n; ++r) {
         for (int c = 0; c < data->column_n; ++c) {
-            result(r, c) = (*this)(r, c) + m(r, c);
+            (*this)(r, c) += m(r, c);
         }
     }
 
-    *this = result;
     return *this;
 }
 
@@ -134,20 +133,17 @@ Matrix& Matrix::operator*=(double d)
     return *this;
 }
 
-double& Matrix::operator()(int row, int column)
+Matrix::DoubleRef Matrix::operator()(int row, int column)
 {
-//    cout << "double& operator() - write:" << endl;
     if (row < 0 || row >= data->row_n || column < 0 || column >= data->column_n) {
         throw (InvalidMatrixRange(row, column));
     }
 
-    data = data->detach();
-    return data->matrix[row][column];
+    return DoubleRef(this, row, column);
 }
 
 double Matrix::operator()(int row, int column) const
 {
-//    cout << "double operator() - read:" << endl;
     if (row < 0 || row >= data->row_n || column < 0 || column >= data->column_n) {
         throw (InvalidMatrixRange(row, column));
     }
@@ -200,7 +196,9 @@ istream& operator>>(istream& s, Matrix& m)
     for (int r = 0; r < newMatrix.data->row_n && getline(s, line); ++r) {
         stringstream ss(line);
         for (int c = 0; c < newMatrix.data->column_n; ++c) {
-            ss >> newMatrix(r, c);
+            double input;
+            ss >> input;
+            newMatrix(r, c) = input;
         }
     }
 
@@ -223,4 +221,51 @@ ostream& operator<<(ostream& s, const Matrix& m)
 Matrix operator*(double d, const Matrix& m)
 {
     return m * d;
+}
+
+
+Matrix::DoubleRef::DoubleRef(Matrix* matrix, int r, int c)
+{
+    this->matrix = matrix;
+    this->r = r;
+    this->c = c;
+}
+
+Matrix::DoubleRef::operator double() const
+{
+    return matrix->data->matrix[r][c];
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator=(double d)
+{
+    matrix->data = matrix->data->detach();
+    matrix->data->matrix[r][c] = d;
+    return *this;
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator=(const DoubleRef& ref)
+{
+    return operator=((double)ref);
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator+=(double d)
+{
+    (*this) = (*this) + d;
+    return (*this);
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator+=(const DoubleRef& ref)
+{
+    return operator+=((double)ref);
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator*=(double d)
+{
+    (*this) = (*this) * d;
+    return (*this);
+}
+
+Matrix::DoubleRef& Matrix::DoubleRef::operator*=(const DoubleRef& ref)
+{
+    return operator*=((double)ref);
 }
