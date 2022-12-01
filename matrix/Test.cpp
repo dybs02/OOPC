@@ -24,6 +24,8 @@ int main()
 
 void testExceptions()
 {
+    cout << "-----------------------------" << endl;
+    cout << "Testing exceptions" << endl;
     Matrix m1 = Matrix(2, 2);
     Matrix m2 = Matrix(5, 5);
     m1.assignRandomValues();

@@ -29,7 +29,7 @@ MatrixNotMultiplicable::MatrixNotMultiplicable(MatrixData* data1, MatrixData* da
 {
     column_n1 = data1->column_n;
     row_n2 = data2->row_n;
-    msg = "Matrix does not proper dimensions for multiplication";
+    msg = "Matrix does not have proper dimensions for multiplication ";
     msg += "(Matrix 1 number of columns = " + to_string(column_n1) + ", ";
     msg += "Matrix 2 number of rows = " + to_string(row_n2) + ")\n";
 }

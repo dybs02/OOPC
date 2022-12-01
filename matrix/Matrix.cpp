@@ -54,7 +54,7 @@ Matrix& Matrix::operator+=(const Matrix& m)
         throw (DifferentMatrixDimensions(data, m.data));
     }
 
-    data = data->detach();
+//    data = data->detach();
 
     for (int r = 0; r < data->row_n; ++r) {
         for (int c = 0; c < data->column_n; ++c) {
