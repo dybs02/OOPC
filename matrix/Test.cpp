@@ -1,6 +1,8 @@
 #include "Matrix.h"
 #include <fstream>
 
+void assignRandomValues(Matrix& m);
+
 void testExceptions();
 void testFileInput();
 void testAssignments();
@@ -22,14 +24,23 @@ int main()
     return 0;
 }
 
+void assignRandomValues(Matrix& m)
+{
+    for (int r = 0; r < m.getRowNumber(); ++r) {
+        for (int c = 0; c < m.getColumnNumber(); ++c) {
+            m(r, c) = experimental::randint(-50, 50);
+        }
+    }
+}
+
 void testExceptions()
 {
     cout << "-----------------------------" << endl;
     cout << "Testing exceptions" << endl;
     Matrix m1 = Matrix(2, 2);
     Matrix m2 = Matrix(5, 5);
-    m1.assignRandomValues();
-    m2.assignRandomValues();
+    assignRandomValues(m1);
+    assignRandomValues(m2);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -98,8 +109,8 @@ void testAssignments()
     cout << "m2 :" << endl;
     cout << m2 << endl;
 
-    cout << "m1.assignRandomValues()" << endl << endl;
-    m1.assignRandomValues();
+    cout << "assignRandomValues(m1)" << endl << endl;
+    assignRandomValues(m1);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -116,8 +127,8 @@ void testAddition()
     Matrix m1 = Matrix(2, 3);
     Matrix m2 = Matrix(2, 3);
     Matrix m3 = Matrix(2, 3);
-    m1.assignRandomValues();
-    m2.assignRandomValues();
+    assignRandomValues(m1);
+    assignRandomValues(m2);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -142,8 +153,8 @@ void testSubtraction()
     Matrix m1 = Matrix(2, 3);
     Matrix m2 = Matrix(2, 3);
     Matrix m3 = Matrix(2, 3);
-    m1.assignRandomValues();
-    m2.assignRandomValues();
+    assignRandomValues(m1);
+    assignRandomValues(m2);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -172,9 +183,9 @@ void testMultiplication()
     Matrix m2 = Matrix(3, 4);
     Matrix m3 = Matrix(4, 2);
     Matrix m4 = Matrix(4, 2);
-    m1.assignRandomValues();
-    m2.assignRandomValues();
-    m4.assignRandomValues();
+    assignRandomValues(m1);
+    assignRandomValues(m2);
+    assignRandomValues(m4);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;
@@ -211,8 +222,8 @@ void testComparison()
 
     Matrix m1 = Matrix(2, 3);
     Matrix m2 = Matrix(3, 4);
-    m1.assignRandomValues();
-    m2.assignRandomValues();
+    assignRandomValues(m1);
+    assignRandomValues(m2);
 
     cout << "m1 :" << endl;
     cout << m1 << endl;

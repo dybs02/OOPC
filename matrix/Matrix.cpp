@@ -17,15 +17,6 @@ Matrix::~Matrix()
     this->decrement();
 }
 
-void Matrix::assignRandomValues()
-{
-    for (int r = 0; r < data->row_n; ++r) {
-        for (int c = 0; c < data->column_n; ++c) {
-            (*this)(r, c) = experimental::randint(-50, 50);
-        }
-    }
-}
-
 void Matrix::assignSameValues(double value)
 {
     for (int r = 0; r < data->row_n; ++r) {
@@ -33,6 +24,16 @@ void Matrix::assignSameValues(double value)
             (*this)(r, c) = value;
         }
     }
+}
+
+int Matrix::getRowNumber()
+{
+    return this->data->row_n;
+}
+
+int Matrix::getColumnNumber()
+{
+    return this->data->column_n;
 }
 
 Matrix& Matrix::operator=(const Matrix& m)

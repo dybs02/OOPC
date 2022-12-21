@@ -16,8 +16,9 @@ class Matrix {
     Matrix(int rows = 0, int columns = 0);
     Matrix(const Matrix& m);
     ~Matrix();
-    void assignRandomValues(); // TODO move to Test.cpp
     void assignSameValues(double value);
+    int getRowNumber();
+    int getColumnNumber();
     Matrix& operator=(const Matrix& m);
     Matrix operator+(const Matrix& m) const;
     Matrix& operator+=(const Matrix& m);
