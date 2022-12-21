@@ -36,6 +36,11 @@ int Matrix::getColumnNumber()
     return this->data->column_n;
 }
 
+int Matrix::getReferenceNumber()
+{
+    return this->data->ref_n;
+}
+
 Matrix& Matrix::operator=(const Matrix& m)
 {
     m.data->ref_n++;

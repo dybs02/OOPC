@@ -19,6 +19,7 @@ class Matrix {
     void assignSameValues(double value);
     int getRowNumber();
     int getColumnNumber();
+    int getReferenceNumber();
     Matrix& operator=(const Matrix& m);
     Matrix operator+(const Matrix& m) const;
     Matrix& operator+=(const Matrix& m);

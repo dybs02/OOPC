@@ -10,6 +10,7 @@ void testAddition();
 void testSubtraction();
 void testMultiplication();
 void testComparison();
+void testReferenceCounting();
 
 int main()
 {
@@ -20,6 +21,7 @@ int main()
     testSubtraction();
     testMultiplication();
     testComparison();
+    testReferenceCounting();
 
     return 0;
 }
@@ -234,4 +236,59 @@ void testComparison()
     cout << "m1 == m2 : " << (m1 == m2) << endl;
     cout << "m1 != m2 : " << (m1 != m2) << endl;
     cout << "m1 == m1 : " << (m1 == m1) << endl;
+}
+
+void testReferenceCounting()
+{
+    cout << "-----------------------------" << endl;
+    cout << "Testing reference counting" << endl;
+
+    Matrix m1 = Matrix(2, 3);
+    m1.assignSameValues(1);
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    Matrix m2(m1);
+    cout << "Matrix m2(m1)" << endl;
+
+    Matrix m3(m2);
+    cout << "Matrix m3(m2)" << endl;
+
+    Matrix m4 = m1;
+    cout << "Matrix m4 = m1" << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m3 :" << endl;
+    cout << m3 << endl;
+
+    cout << "m4 :" << endl;
+    cout << m4 << endl;
+
+    cout << "m1 reference count = " << m1.getReferenceNumber() << endl;
+
+    assignRandomValues(m1);
+    cout << "assignRandomValues(m1)" << endl;
+
+    cout << "m1 :" << endl;
+    cout << m1 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m3 :" << endl;
+    cout << m3 << endl;
+
+    cout << "m4 :" << endl;
+    cout << m4 << endl;
+
+    cout << "m2 :" << endl;
+    cout << m2 << endl;
+
+    cout << "m1 reference count = " << m1.getReferenceNumber() << endl;
+    cout << "m2 reference count = " << m2.getReferenceNumber() << endl;
+    cout << "m3 reference count = " << m3.getReferenceNumber() << endl;
+    cout << "m4 reference count = " << m4.getReferenceNumber() << endl;
 }
