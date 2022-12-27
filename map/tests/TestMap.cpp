@@ -1,5 +1,5 @@
-#include "Employee.h"                                                    // Defines class Employee
-#include "Map.h"                                                        // Defines template Map<Key, Value>
+#include "./../src/Employee.h"                                          // Defines class Employee
+#include "./../src/Map.h"                                               // Defines template Map<Key, Value>
 #include <iostream>
 
 typedef unsigned int ID; 												// Identification number of employee
