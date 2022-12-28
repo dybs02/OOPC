@@ -13,4 +13,4 @@ matrix/.idea/
 matrix/main
 map/.idea/
 map/main
-map/out/
+map/out/*
